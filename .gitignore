@@ -1,2 +1,3 @@
 .env
-jira_ai_agent_venv/
+ai_agent_venv/
+test*.py
