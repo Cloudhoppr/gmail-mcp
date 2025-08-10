@@ -1,9 +1,8 @@
 import time
 from typing import List
 
-from fastmcp.server import FastMCP
-from ..services.gmail_client import GmailClient
-from ..models.email_models import (
+from services.gmail_client import GmailClient
+from models.email_models import (
     BulkEmailRequest,
     BulkEmailResponse,
     EmailMessage,
@@ -11,14 +10,11 @@ from ..models.email_models import (
     QuotaStatus,
 )
 
-mcp = FastMCP()
-
 def get_gmail_client():
     """Helper function to instantiate the Gmail client."""
     # In a more advanced setup, this could use dependency injection.
     return GmailClient()
 
-@mcp.tool()
 def send_single_email(email: EmailMessage) -> EmailSendResult:
     """
     Sends a single email using the Gmail API.
@@ -47,7 +43,6 @@ def send_single_email(email: EmailMessage) -> EmailSendResult:
             message_id=result.get('id')
         )
 
-@mcp.tool()
 def send_multiple_emails(request: BulkEmailRequest) -> BulkEmailResponse:
     """
     Sends multiple emails in batches using the Gmail API.
@@ -93,7 +88,6 @@ def send_multiple_emails(request: BulkEmailRequest) -> BulkEmailResponse:
         results=results
     )
 
-@mcp.tool()
 def get_email_quota_status() -> QuotaStatus:
     """
     Checks the current Gmail API quota usage and limits.

@@ -8,7 +8,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from ..models.email_models import EmailMessage
+from models.email_models import EmailMessage
 
 # If modifying these scopes, delete token.json.
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
